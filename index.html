@@ -255,11 +255,13 @@
             overflow: hidden;
             position: relative;
             cursor: pointer;
+            background: var(--surface);
         }
         .gallery-item img {
             width: 100%; height: 100%;
             object-fit: cover;
             transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            display: block;
         }
         .gallery-item:hover img { transform: scale(1.1); }
         .gallery-overlay {
@@ -295,6 +297,7 @@
             position: relative;
             border-radius: 12px;
             overflow: hidden;
+            background: var(--surface);
         }
         .about-image img {
             width: 100%;
@@ -481,30 +484,90 @@
     </section>
 
     <!-- GALLERY -->
+    <!-- 
+    ============================================
+    ADD YOUR OWN PHOTOS HERE
+    ============================================
+    Replace the src paths below with your own image files.
+    Options:
+    1. Local files:   src="images/photo1.jpg"
+    2. Full URL:      src="https://yourdomain.com/photos/shop.jpg"
+    3. Same folder:   src="shop-interior.jpg"
+    
+    Recommended image size: 800x800px or larger (square works best)
+    Format: JPG or WebP for best performance
+    
+    To add MORE photos, just copy/paste another .gallery-item block.
+    To remove photos, delete a .gallery-item block.
+    
+    Update the overlay text (<span>) to match what's in each photo.
+    ============================================
+    -->
     <section id="gallery" class="gallery">
         <h2 class="section-title">The <span>Shop</span></h2>
         <p class="section-sub">A space built for craft.</p>
         <div class="gallery-grid">
+            
+            <!-- PHOTO 1 -->
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80" alt="Barbershop interior">
+                <img src="images/shop-interior.jpg" alt="ANCO Studio interior">
                 <div class="gallery-overlay"><span>Interior</span></div>
             </div>
+            
+            <!-- PHOTO 2 -->
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Barber at work">
+                <img src="images/barber-at-work.jpg" alt="Barber cutting hair">
                 <div class="gallery-overlay"><span>Craft</span></div>
             </div>
+            
+            <!-- PHOTO 3 -->
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Haircut detail">
+                <img src="images/haircut-detail.jpg" alt="Fade haircut detail">
                 <div class="gallery-overlay"><span>Detail</span></div>
             </div>
+            
+            <!-- PHOTO 4 -->
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Hot towel shave">
+                <img src="images/hot-towel-shave.jpg" alt="Hot towel shave">
                 <div class="gallery-overlay"><span>Shave</span></div>
             </div>
+            
+            <!-- PHOTO 5 -->
+            <div class="gallery-item">
+                <img src="images/shop-front.jpg" alt="ANCO Studio storefront">
+                <div class="gallery-overlay"><span>Street View</span></div>
+            </div>
+            
+            <!-- PHOTO 6 -->
+            <div class="gallery-item">
+                <img src="images/beard-trim.jpg" alt="Beard trim">
+                <div class="gallery-overlay"><span>Beard</span></div>
+            </div>
+            
+            <!-- PHOTO 7 -->
+            <div class="gallery-item">
+                <img src="images/client-after.jpg" alt="Fresh cut">
+                <div class="gallery-overlay"><span>Fresh</span></div>
+            </div>
+            
+            <!-- PHOTO 8 -->
+            <div class="gallery-item">
+                <img src="images/shop-vibe.jpg" alt="Shop atmosphere">
+                <div class="gallery-overlay"><span>Vibe</span></div>
+            </div>
+            
         </div>
     </section>
 
     <!-- ABOUT -->
+    <!-- 
+    ============================================
+    ABOUT SECTION IMAGE
+    Replace the src below with your own photo.
+    Suggested: a wide shop shot or team photo.
+    Recommended size: 800x600px or larger.
+    ============================================
+    -->
     <section id="about">
         <div class="about-content">
             <div class="about-text">
@@ -514,7 +577,7 @@
                 <p>We've built the shop around honest craft, good conversation, and zero pretension. Come through.</p>
             </div>
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80" alt="ANCO Studio barbershop">
+                <img src="images/about-shop.jpg" alt="ANCO Studio barbershop">
             </div>
         </div>
     </section>
