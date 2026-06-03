@@ -848,12 +848,13 @@
                     </div>
                     <div class="info-block">
                         <h3>Hours</h3>
+                        <div class="hours-row"><span>Sunday</span><span>10:00 AM – 6:00 PM</span></div>
+                        <div class="hours-row"><span>Monday</span><span>Closed</span></div>
                         <div class="hours-row"><span>Tuesday</span><span>10:00 AM – 8:00 PM</span></div>
-                        <div class="hours-row"><span>Wednesday</span><span>10:00 AM – 8:00 PM</span></div>
-                        <div class="hours-row"><span>Thursday</span><span>10:00 AM – 5:00 PM</span></div>
-                        <div class="hours-row"><span>Friday</span><span>10:00 AM – 5:00 PM</span></div>
-                        <div class="hours-row"><span>Saturday</span><span>9:00 AM – 5:00 PM</span></div>
-                        <div class="hours-row"><span>Sunday & Monday</span><span>Closed</span></div>
+                        <div class="hours-row"><span>Wednesday</span><span>10:00 AM – 6:00 PM</span></div>
+                        <div class="hours-row"><span>Thursday</span><span>10:00 AM – 6:00 PM</span></div>
+                        <div class="hours-row"><span>Friday</span><span>10:00 AM – 6:00 PM</span></div>
+                        <div class="hours-row"><span>Saturday</span><span>10:00 AM – 6:00 PM</span></div>
                     </div>
                 </div>
                 <div class="map-container">
@@ -881,24 +882,25 @@
         <p class="footer-copy">© 2026 ANCO Studio. All rights reserved.</p>
     </footer>
 
-    <!-- LIVE STATUS SCRIPT -->
+    <!-- LIVE STATUS SCRIPT — REAL TIME AUCKLAND -->
     <script>
-        (function() {
+        function updateStatus() {
             const now = new Date();
-            const day = now.getDay();
-            const hour = now.getHours();
-            const minute = now.getMinutes();
+            const aucklandTime = new Date(now.toLocaleString("en-US", {timeZone: "Pacific/Auckland"}));
+            const day = aucklandTime.getDay();
+            const hour = aucklandTime.getHours();
+            const minute = aucklandTime.getMinutes();
             const time = hour + minute / 60;
 
             let open = false;
             const schedule = {
-                0: null, // Sunday
-                1: null, // Monday
-                2: [10, 20], // Tuesday
-                3: [10, 20], // Wednesday
-                4: [10, 17], // Thursday
-                5: [10, 17], // Friday
-                6: [9, 17]   // Saturday
+                0: [10, 18], // Sunday: 10am–6pm
+                1: null,     // Monday: Closed
+                2: [10, 20], // Tuesday: 10am–8pm
+                3: [10, 18], // Wednesday: 10am–6pm
+                4: [10, 18], // Thursday: 10am–6pm
+                5: [10, 18], // Friday: 10am–6pm
+                6: [10, 18]  // Saturday: 10am–6pm
             };
 
             const today = schedule[day];
@@ -914,7 +916,10 @@
                 dot.classList.add('closed');
                 text.textContent = 'Closed Now — See Hours';
             }
-        })();
+        }
+
+        updateStatus();
+        setInterval(updateStatus, 60000);
     </script>
 
     <!-- MOBILE MENU SCRIPT -->
