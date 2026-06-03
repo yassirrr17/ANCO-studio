@@ -203,6 +203,17 @@
             justify-content: center;
         }
 
+        /* BACKGROUND VIDEO */
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
         /* SERVICES SECTION */
         .services-list {
             display: flex;
@@ -412,8 +423,11 @@
         <div class="mobile-menu">☰</div>
     </nav>
 
-    <!-- HERO — Full-bleed with background image -->
-    <section class="fullscreen-section" style="background-image: url('images/6.jpg');" id="hero">
+    <!-- HERO — Background Video -->
+    <section class="fullscreen-section" id="hero">
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="video1.mp4" type="video/mp4">
+        </video>
         <div class="section-overlay"></div>
         <div class="section-content">
             <div class="status-pill">
@@ -430,7 +444,7 @@
     </section>
 
     <!-- SERVICES — Full-bleed with background image -->
-    <section class="fullscreen-section" style="background-image: url('images/5.jpg');" id="services">
+    <section class="fullscreen-section" style="background-image: url('image5.jpg');" id="services">
         <div class="section-overlay"></div>
         <div class="section-content" style="width: 100%; max-width: 900px;">
             <h2>The <span>Menu</span></h2>
@@ -489,27 +503,27 @@
             <p class="section-sub">Real clients. Real transformations.</p>
             <div class="gallery-scroll">
                 <div class="gallery-item">
-                    <img src="images/1.jpg" alt="Interior">
+                    <img src="image1.jpg" alt="Interior">
                     <div class="gallery-overlay"><span>Interior</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/2.jpg" alt="Blow dry">
+                    <img src="image2.jpg" alt="Blow dry">
                     <div class="gallery-overlay"><span>Craft</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/3.jpg" alt="Balayage">
+                    <img src="image3.jpg" alt="Balayage">
                     <div class="gallery-overlay"><span>Color</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/4.jpg" alt="Styling">
+                    <img src="image4.jpg" alt="Styling">
                     <div class="gallery-overlay"><span>Style</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/7.jpg" alt="Blonde">
+                    <img src="image7.jpg" alt="Blonde">
                     <div class="gallery-overlay"><span>Blonde</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/8.jpg" alt="Vibe">
+                    <img src="image8.jpg" alt="Vibe">
                     <div class="gallery-overlay"><span>Vibe</span></div>
                 </div>
             </div>
@@ -517,7 +531,7 @@
     </section>
 
     <!-- ABOUT — Full-bleed with background image -->
-    <section class="fullscreen-section" style="background-image: url('images/about.jpg');" id="about">
+    <section class="fullscreen-section" style="background-image: url('image2.jpg');" id="about">
         <div class="section-overlay"></div>
         <div class="section-content">
             <h2>Built on <span>Craft</span></h2>
