@@ -30,7 +30,7 @@
             overflow-x: hidden;
         }
         h1, h2, h3, .brand { font-family: 'Syne', sans-serif; }
-        
+
         /* NAV */
         nav {
             position: fixed;
@@ -52,7 +52,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
         .nav-links a {
             color: var(--white);
             text-decoration: none;
@@ -73,8 +73,33 @@
         }
         .nav-links a:hover { color: var(--rose-gold); }
         .nav-links a:hover::after { width: 100%; }
+
+        /* BOOK NOW BUTTON IN NAV */
+        .nav-links .book-btn {
+            background: var(--rose-gold);
+            color: var(--black);
+            padding: 0.6rem 1.4rem;
+            border-radius: 4px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-links .book-btn:hover {
+            background: var(--rose-gold-dim);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(212, 165, 165, 0.3);
+            color: var(--black);
+        }
+        .nav-links .book-btn::after { display: none; }
+
         .mobile-menu { display: none; font-size: 1.5rem; color: var(--rose-gold); cursor: pointer; }
-        
+
         /* MOBILE MENU */
         .mobile-nav {
             display: none;
@@ -98,6 +123,23 @@
             letter-spacing: 2px;
         }
         .mobile-nav a:hover { color: var(--rose-gold); }
+        .mobile-nav .book-btn-mobile {
+            background: var(--rose-gold);
+            color: var(--black);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .mobile-nav .book-btn-mobile:hover {
+            background: var(--rose-gold-dim);
+            transform: translateY(-1px);
+        }
         .close-menu {
             position: absolute;
             top: 1.5rem; right: 2rem;
@@ -120,7 +162,7 @@
             background-size: cover;
             background-position: center;
         }
-        
+
         .section-overlay {
             position: absolute;
             inset: 0;
@@ -132,14 +174,14 @@
             );
             z-index: 1;
         }
-        
+
         .section-content {
             position: relative;
             z-index: 2;
             max-width: 800px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.9);
         }
-        
+
         .fullscreen-section h1 {
             font-size: clamp(3rem, 10vw, 7rem);
             font-weight: 800;
@@ -149,7 +191,7 @@
             text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 4px 30px rgba(0,0,0,0.7);
         }
         .fullscreen-section h1 span { color: var(--rose-gold); }
-        
+
         .fullscreen-section h2 {
             font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 700;
@@ -158,7 +200,7 @@
             text-shadow: 0 2px 15px rgba(0,0,0,0.9), 0 3px 20px rgba(0,0,0,0.7);
         }
         .fullscreen-section h2 span { color: var(--rose-gold); }
-        
+
         .section-sub {
             font-size: 1.2rem;
             color: var(--white);
@@ -169,7 +211,7 @@
             text-shadow: 0 1px 8px rgba(0,0,0,0.9);
             font-weight: 400;
         }
-        
+
         .status-pill {
             display: inline-flex;
             align-items: center;
@@ -195,7 +237,7 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
-        
+
         .btn {
             padding: 1rem 2.5rem;
             border-radius: 4px;
@@ -233,7 +275,7 @@
             border-color: var(--rose-gold);
             color: var(--rose-gold);
         }
-        
+
         .hero-cta {
             display: flex;
             gap: 1rem;
@@ -308,7 +350,7 @@
             scrollbar-width: none;
         }
         .gallery-scroll::-webkit-scrollbar { display: none; }
-        
+
         .gallery-item {
             flex: 0 0 300px;
             height: 400px;
@@ -338,6 +380,78 @@
             color: var(--rose-gold);
             font-size: 1.1rem;
             text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+        }
+
+        /* MEET THE TEAM SECTION */
+        .team-section {
+            padding: 6rem 2rem;
+            background: var(--black);
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .team-card {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+        .team-photo {
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: grayscale(100%);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: filter 0.3s;
+        }
+        .team-card:hover .team-photo {
+            filter: grayscale(0%);
+        }
+        .team-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--rose-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        .team-bio {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.7;
+            max-width: 300px;
+            margin: 0 auto 1rem;
+        }
+        .team-instagram {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--rose-gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .team-instagram:hover {
+            color: var(--white);
+        }
+        .team-instagram svg {
+            width: 16px;
+            height: 16px;
         }
 
         /* ABOUT */
@@ -462,8 +576,11 @@
             .gallery-item { flex: 0 0 250px; height: 350px; }
             .about-text { padding: 1.5rem; }
             .location-info { padding: 1.5rem; }
+            .team-grid { grid-template-columns: 1fr; }
+            .team-photo { max-width: 250px; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -472,20 +589,24 @@
         <div class="brand">ANCO Studio</div>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
+            <li><a href="#team">Team</a></li>
             <li><a href="#gallery">Work</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#location">Find Us</a></li>
+            <li><a href="https://apps.kitomba.com/bookings/ancostudio" target="_blank" class="book-btn">Book Now</a></li>
         </ul>
         <div class="mobile-menu" onclick="toggleMenu()">☰</div>
     </nav>
-    
+
     <!-- MOBILE MENU -->
     <div class="mobile-nav" id="mobileNav">
         <div class="close-menu" onclick="toggleMenu()">✕</div>
         <a href="#services" onclick="toggleMenu()">Services</a>
+        <a href="#team" onclick="toggleMenu()">Team</a>
         <a href="#gallery" onclick="toggleMenu()">Work</a>
         <a href="#about" onclick="toggleMenu()">About</a>
         <a href="#location" onclick="toggleMenu()">Find Us</a>
+        <a href="https://apps.kitomba.com/bookings/ancostudio" target="_blank" class="book-btn-mobile" onclick="toggleMenu()">Book Now</a>
     </div>
 
     <!-- HERO — Background Video -->
@@ -504,6 +625,7 @@
             <div class="hero-cta">
                 <a href="tel:+64272257002" class="btn btn-primary">Call Now</a>
                 <a href="https://www.google.com/maps/dir/?api=1&destination=1A%2F120+Customs+Street+West+Auckland+CBD" target="_blank" class="btn btn-ghost">Get Directions</a>
+                <a href="https://apps.kitomba.com/bookings/ancostudio" target="_blank" class="btn btn-primary">Book Online</a>
             </div>
         </div>
     </section>
@@ -557,6 +679,106 @@
                     </div>
                     <div class="service-price">$55</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEET THE TEAM -->
+    <section class="team-section" id="team">
+        <div class="section-content" style="max-width: 1200px; margin: 0 auto; text-align: center; margin-bottom: 3rem;">
+            <h2 style="font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -2px; margin-bottom: 1rem;">Meet the <span style="color: var(--rose-gold);">Team</span></h2>
+            <p class="section-sub">Get to know our talented stylists who are dedicated to creating the perfect look for you.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="adrian.jpg" alt="Adrian Deng" class="team-photo">
+                <div class="team-name">Adrian</div>
+                <div class="team-role">Founder & Director</div>
+                <p class="team-bio">Adrian is renowned for his remarkable aptitude in comprehending and fulfilling client requests impeccably. His reputation is rooted in his commitment to deliver exceptional results and expert services consistently.</p>
+                <a href="https://www.instagram.com/adriandhair/" target="_blank" class="team-instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Follow Adrian on Instagram
+                </a>
+            </div>
+            <div class="team-card">
+                <img src="alan.jpg" alt="Alan Wang" class="team-photo">
+                <div class="team-name">Alan</div>
+                <div class="team-role">Co-Founder & Creative Director</div>
+                <p class="team-bio">Alan is a passionate hair artist with years of experience. He won many hairdressing awards and was a member of L'oreal Pro's creative team. Great at cutting, colouring and editorial styling.</p>
+                <a href="https://www.instagram.com/hairbyalanwang/" target="_blank" class="team-instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Follow Alan on Instagram
+                </a>
+            </div>
+            <div class="team-card">
+                <img src="aone.jpg" alt="Aone" class="team-photo">
+                <div class="team-name">Aone</div>
+                <div class="team-role">Senior Stylist</div>
+                <p class="team-bio">Aone is dedicated to attentive client consultation and a meticulous focus on detail. Advanced cutting techniques, coloring expertise, styling finesse, perm services, and smoothing treatments.</p>
+                <a href="https://www.instagram.com/aone_ancostudio/" target="_blank" class="team-instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Follow Aone on Instagram
+                </a>
+            </div>
+            <div class="team-card">
+                <img src="thomas.jpg" alt="Thomas" class="team-photo">
+                <div class="team-name">Thomas</div>
+                <div class="team-role">Salon Manager / Senior Stylist</div>
+                <p class="team-bio">With over 15 years of experience, Thomas brings a calm, grounded confidence to ANCO Studio — blending craft, care, and connection in every service. A devoted dog lover.</p>
+                <a href="https://www.instagram.com/tomancostudio" target="_blank" class="team-instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Follow Thomas on Instagram
+                </a>
+            </div>
+            <div class="team-card">
+                <img src="hazel.jpg" alt="Hazel" class="team-photo">
+                <div class="team-name">Hazel</div>
+                <div class="team-role">Senior Stylist</div>
+                <p class="team-bio">Hazel specialises in women's and men's cutting, colouring, straightening, perms, and balayage. Her calm presence, attention to detail, and strong technical foundation make every appointment elevated.</p>
+                <a href="https://www.instagram.com/hairby_hazelpang" target="_blank" class="team-instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Follow Hazel on Instagram
+                </a>
+            </div>
+            <div class="team-card">
+                <img src="cassie.jpg" alt="Cassie" class="team-photo">
+                <div class="team-name">Cassie</div>
+                <div class="team-role">Senior Colourist</div>
+                <p class="team-bio">Cassie is known for her warm personality and exceptional attention to detail. She specializes in dimensional colour work, particularly highlights and balayage, creating natural, sun-kissed results.</p>
+                <a href="https://www.instagram.com/cassiejin_anco/" target="_blank" class="team-instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Follow Cassie on Instagram
+                </a>
+            </div>
+            <div class="team-card">
+                <img src="emilie.jpg" alt="Emilie" class="team-photo">
+                <div class="team-name">Emilie</div>
+                <div class="team-role">Colourist</div>
+                <p class="team-bio">Emilie is our newest team member with a background in professional makeup and a big passion for hair. She's currently studying hairstyling and already impressing us with her fast learning and bright energy.</p>
+                <a href="https://www.instagram.com/21mua_" target="_blank" class="team-instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Follow Emilie on Instagram
+                </a>
+            </div>
+            <div class="team-card">
+                <img src="yunina.jpg" alt="Yunina" class="team-photo">
+                <div class="team-name">Yunina</div>
+                <div class="team-role">Freelance Makeup Artist</div>
+                <p class="team-bio">Yunina is a highly trained makeup artist with a formal qualification from Korea and over 10 years of working experience who brings skill and attention to every detail.</p>
+                <a href="https://www.instagram.com/uniqueby.yunina/" target="_blank" class="team-instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Follow Yunina on Instagram
+                </a>
+            </div>
+            <div class="team-card">
+                <img src="yuni.jpg" alt="Yuni" class="team-photo">
+                <div class="team-name">Yuni</div>
+                <div class="team-role">Owner of Yuni Wax</div>
+                <p class="team-bio">With years of experience as a professional beauty therapist, Yuni brings precision, care, and comfort to every treatment. Expert waxing services as well as manicures and pedicures.</p>
+                <a href="https://www.instagram.com/yuniwax" target="_blank" class="team-instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Follow Yuni on Instagram
+                </a>
             </div>
         </div>
     </section>
@@ -655,6 +877,7 @@
             <a href="https://instagram.com/anco.studio" target="_blank">Instagram</a>
             <a href="https://facebook.com/anco.studio" target="_blank">Facebook</a>
             <a href="mailto:info@ancostudio.com">Email</a>
+            <a href="https://apps.kitomba.com/bookings/ancostudio" target="_blank">Book Online</a>
         </div>
         <p class="footer-copy">© 2026 ANCO Studio. All rights reserved.</p>
     </footer>
@@ -667,7 +890,7 @@
             const hour = now.getHours();
             const minute = now.getMinutes();
             const time = hour + minute / 60;
-            
+
             let open = false;
             const schedule = {
                 0: null, // Sunday
@@ -678,13 +901,13 @@
                 5: [10, 17], // Friday
                 6: [9, 17]   // Saturday
             };
-            
+
             const today = schedule[day];
             if (today && time >= today[0] && time < today[1]) open = true;
-            
+
             const dot = document.getElementById('statusDot');
             const text = document.getElementById('statusText');
-            
+
             if (open) {
                 dot.classList.remove('closed');
                 text.textContent = 'Open Now — Walk In';
