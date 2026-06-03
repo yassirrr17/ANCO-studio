@@ -74,6 +74,37 @@
         .nav-links a:hover { color: var(--rose-gold); }
         .nav-links a:hover::after { width: 100%; }
         .mobile-menu { display: none; font-size: 1.5rem; color: var(--rose-gold); cursor: pointer; }
+        
+        /* MOBILE MENU */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(26, 26, 26, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+        .mobile-nav.active { display: flex; }
+        .mobile-nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .mobile-nav a:hover { color: var(--rose-gold); }
+        .close-menu {
+            position: absolute;
+            top: 1.5rem; right: 2rem;
+            font-size: 2rem;
+            color: var(--rose-gold);
+            cursor: pointer;
+        }
 
         /* FULL-BLEED SECTIONS */
         .fullscreen-section {
@@ -233,10 +264,9 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 1.5rem 0;
+            padding: 1.5rem;
             border-bottom: 1px solid rgba(255,255,255,0.2);
             background: rgba(0,0,0,0.4);
-            padding: 1.5rem;
             border-radius: 8px;
         }
         .service-row:first-child {
@@ -446,7 +476,16 @@
             <li><a href="#about">About</a></li>
             <li><a href="#location">Find Us</a></li>
         </ul>
-        <div class="mobile-menu">☰</div>
+        <div class="mobile-menu" onclick="toggleMenu()">☰</div>
+    </nav>
+    
+    <!-- MOBILE MENU -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="close-menu" onclick="toggleMenu()">✕</div>
+        <a href="#services" onclick="toggleMenu()">Services</a>
+        <a href="#gallery" onclick="toggleMenu()">Work</a>
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="#location" onclick="toggleMenu()">Find Us</a>
     </nav>
 
     <!-- HERO — Background Video -->
@@ -654,6 +693,13 @@
                 text.textContent = 'Closed Now — See Hours';
             }
         })();
+    </script>
+
+    <!-- MOBILE MENU SCRIPT -->
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileNav').classList.toggle('active');
+        }
     </script>
 
 </body>
