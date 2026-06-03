@@ -1,5 +1,4 @@
-
-html_code = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,7 +30,7 @@ html_code = '''<!DOCTYPE html>
             overflow-x: hidden;
         }
         h1, h2, h3, .brand { font-family: 'Syne', sans-serif; }
-        
+
         /* NAV */
         nav {
             position: fixed;
@@ -74,7 +73,7 @@ html_code = '''<!DOCTYPE html>
         }
         .nav-links a:hover { color: var(--rose-gold); }
         .nav-links a:hover::after { width: 100%; }
-        
+
         /* BOOK NOW BUTTON IN NAV */
         .nav-links .book-btn {
             background: var(--rose-gold);
@@ -98,9 +97,9 @@ html_code = '''<!DOCTYPE html>
             color: var(--black);
         }
         .nav-links .book-btn::after { display: none; }
-        
+
         .mobile-menu { display: none; font-size: 1.5rem; color: var(--rose-gold); cursor: pointer; }
-        
+
         /* MOBILE MENU */
         .mobile-nav {
             display: none;
@@ -163,7 +162,7 @@ html_code = '''<!DOCTYPE html>
             background-size: cover;
             background-position: center;
         }
-        
+
         .section-overlay {
             position: absolute;
             inset: 0;
@@ -175,14 +174,14 @@ html_code = '''<!DOCTYPE html>
             );
             z-index: 1;
         }
-        
+
         .section-content {
             position: relative;
             z-index: 2;
             max-width: 800px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.9);
         }
-        
+
         .fullscreen-section h1 {
             font-size: clamp(3rem, 10vw, 7rem);
             font-weight: 800;
@@ -192,7 +191,7 @@ html_code = '''<!DOCTYPE html>
             text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 4px 30px rgba(0,0,0,0.7);
         }
         .fullscreen-section h1 span { color: var(--rose-gold); }
-        
+
         .fullscreen-section h2 {
             font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 700;
@@ -201,7 +200,7 @@ html_code = '''<!DOCTYPE html>
             text-shadow: 0 2px 15px rgba(0,0,0,0.9), 0 3px 20px rgba(0,0,0,0.7);
         }
         .fullscreen-section h2 span { color: var(--rose-gold); }
-        
+
         .section-sub {
             font-size: 1.2rem;
             color: var(--white);
@@ -212,7 +211,7 @@ html_code = '''<!DOCTYPE html>
             text-shadow: 0 1px 8px rgba(0,0,0,0.9);
             font-weight: 400;
         }
-        
+
         .status-pill {
             display: inline-flex;
             align-items: center;
@@ -238,7 +237,7 @@ html_code = '''<!DOCTYPE html>
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
-        
+
         .btn {
             padding: 1rem 2.5rem;
             border-radius: 4px;
@@ -276,7 +275,7 @@ html_code = '''<!DOCTYPE html>
             border-color: var(--rose-gold);
             color: var(--rose-gold);
         }
-        
+
         .hero-cta {
             display: flex;
             gap: 1rem;
@@ -351,7 +350,7 @@ html_code = '''<!DOCTYPE html>
             scrollbar-width: none;
         }
         .gallery-scroll::-webkit-scrollbar { display: none; }
-        
+
         .gallery-item {
             flex: 0 0 300px;
             height: 400px;
@@ -581,6 +580,7 @@ html_code = '''<!DOCTYPE html>
             .team-photo { max-width: 250px; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -597,7 +597,7 @@ html_code = '''<!DOCTYPE html>
         </ul>
         <div class="mobile-menu" onclick="toggleMenu()">☰</div>
     </nav>
-    
+
     <!-- MOBILE MENU -->
     <div class="mobile-nav" id="mobileNav">
         <div class="close-menu" onclick="toggleMenu()">✕</div>
@@ -890,7 +890,7 @@ html_code = '''<!DOCTYPE html>
             const hour = now.getHours();
             const minute = now.getMinutes();
             const time = hour + minute / 60;
-            
+
             let open = false;
             const schedule = {
                 0: null, // Sunday
@@ -901,13 +901,13 @@ html_code = '''<!DOCTYPE html>
                 5: [10, 17], // Friday
                 6: [9, 17]   // Saturday
             };
-            
+
             const today = schedule[day];
             if (today && time >= today[0] && time < today[1]) open = true;
-            
+
             const dot = document.getElementById('statusDot');
             const text = document.getElementById('statusText');
-            
+
             if (open) {
                 dot.classList.remove('closed');
                 text.textContent = 'Open Now — Walk In';
@@ -926,9 +926,4 @@ html_code = '''<!DOCTYPE html>
     </script>
 
 </body>
-</html>'''
-
-with open('/mnt/agents/output/index.html', 'w', encoding='utf-8') as f:
-    f.write(html_code)
-
-print("Saved! File size:", len(html_code), "characters")
+</html>
