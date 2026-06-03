@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANCO Studio — Auckland CBD Barbershop</title>
+    <title>ANCO Studio — Auckland's Blonde Specialist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --black: #0a0a0a;
-            --charcoal: #141414;
-            --surface: #1a1a1a;
-            --gold: #c9a84c;
-            --gold-dim: #a0853a;
-            --gold-glow: rgba(201, 168, 76, 0.15);
-            --white: #f5f5f5;
-            --gray: #888;
-            --gray-dark: #444;
+            --black: #1a1a1a;
+            --charcoal: #242424;
+            --surface: rgba(42, 42, 42, 0.6);
+            --rose-gold: #d4a5a5;
+            --rose-gold-dim: #b88a8a;
+            --rose-gold-glow: rgba(212, 165, 165, 0.2);
+            --white: #f0f0f0;
+            --gray: #a0a0a0;
+            --gray-dark: #666;
             --green: #22c55e;
             --red: #ef4444;
         }
@@ -36,10 +36,10 @@
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.7);
+            background: rgba(26, 26, 26, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+            border-bottom: 1px solid rgba(212, 165, 165, 0.1);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -48,7 +48,7 @@
         .brand {
             font-size: 1.5rem;
             font-weight: 800;
-            color: var(--gold);
+            color: var(--rose-gold);
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -68,63 +68,83 @@
             position: absolute;
             bottom: -4px; left: 0;
             width: 0; height: 1px;
-            background: var(--gold);
+            background: var(--rose-gold);
             transition: width 0.3s;
         }
-        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover { color: var(--rose-gold); }
         .nav-links a:hover::after { width: 100%; }
-        .mobile-menu { display: none; font-size: 1.5rem; color: var(--gold); cursor: pointer; }
+        .mobile-menu { display: none; font-size: 1.5rem; color: var(--rose-gold); cursor: pointer; }
 
-        /* HERO */
-        .hero {
+        /* FULL-BLEED SECTIONS */
+        .fullscreen-section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 8rem 2rem 4rem;
+            padding: 6rem 2rem;
             position: relative;
-            background: radial-gradient(ellipse at center, var(--charcoal) 0%, var(--black) 70%);
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
-        .hero::before {
-            content: '';
+        
+        .section-overlay {
             position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
-            pointer-events: none;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(26, 26, 26, 0.5) 0%,
+                rgba(26, 26, 26, 0.3) 40%,
+                rgba(26, 26, 26, 0.7) 100%
+            );
+            z-index: 1;
         }
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+        
+        .section-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        
+        .fullscreen-section h1 {
+            font-size: clamp(3rem, 10vw, 7rem);
             font-weight: 800;
+            letter-spacing: -3px;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        .fullscreen-section h1 span { color: var(--rose-gold); }
+        
+        .fullscreen-section h2 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
             letter-spacing: -2px;
             margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
         }
-        .hero h1 span { color: var(--gold); }
-        .hero-sub {
-            font-size: 1.1rem;
+        .fullscreen-section h2 span { color: var(--rose-gold); }
+        
+        .section-sub {
+            font-size: 1.2rem;
             color: var(--gray);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             max-width: 500px;
-            position: relative;
-            z-index: 1;
+            margin-left: auto;
+            margin-right: auto;
         }
+        
         .status-pill {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: var(--surface);
-            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
             padding: 0.5rem 1.2rem;
             border-radius: 100px;
             font-size: 0.85rem;
             margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
         }
         .status-dot {
             width: 8px; height: 8px;
@@ -138,14 +158,7 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-        }
+        
         .btn {
             padding: 1rem 2.5rem;
             border-radius: 4px;
@@ -163,156 +176,124 @@
             gap: 0.5rem;
         }
         .btn-primary {
-            background: var(--gold);
+            background: var(--rose-gold);
             color: var(--black);
         }
         .btn-primary:hover {
-            background: var(--gold-dim);
+            background: var(--rose-gold-dim);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.3);
+            box-shadow: 0 10px 30px rgba(212, 165, 165, 0.3);
         }
         .btn-ghost {
-            background: transparent;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
             color: var(--white);
             border: 1px solid rgba(255,255,255,0.2);
         }
         .btn-ghost:hover {
-            border-color: var(--gold);
-            color: var(--gold);
+            background: rgba(212, 165, 165, 0.1);
+            border-color: var(--rose-gold);
+            color: var(--rose-gold);
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        /* SECTIONS */
-        section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        .section-title span { color: var(--gold); }
-        .section-sub {
-            text-align: center;
-            color: var(--gray);
-            margin-bottom: 4rem;
-            font-size: 1rem;
-        }
-
-        /* SERVICES */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        /* SERVICES SECTION */
+        .services-list {
+            display: flex;
+            flex-direction: column;
             gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .service-card {
-            background: var(--surface);
-            border: 1px solid rgba(255,255,255,0.03);
-            border-radius: 12px;
-            padding: 2.5rem;
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
+        .service-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
+        .service-row:first-child {
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(201, 168, 76, 0.2);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-        .service-card:hover::before { opacity: 1; }
-        .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--gold);
-        }
-        .service-card .price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 1rem 0;
+        .service-name {
             font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: left;
         }
-        .service-card p { color: var(--gray); font-size: 0.9rem; }
+        .service-desc {
+            font-size: 0.85rem;
+            color: var(--gray);
+            text-align: left;
+            margin-top: 0.3rem;
+        }
+        .service-price {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--rose-gold);
+            white-space: nowrap;
+            margin-left: 2rem;
+        }
 
         /* GALLERY */
-        .gallery {
-            max-width: 100%;
-            padding: 6rem 0;
+        .gallery-scroll {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 2rem 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.5rem;
-        }
+        .gallery-scroll::-webkit-scrollbar { display: none; }
+        
         .gallery-item {
-            aspect-ratio: 1;
+            flex: 0 0 300px;
+            height: 400px;
+            border-radius: 12px;
             overflow: hidden;
             position: relative;
+            scroll-snap-align: start;
             cursor: pointer;
-            background: var(--surface);
         }
         .gallery-item img {
             width: 100%; height: 100%;
             object-fit: cover;
             transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            display: block;
         }
         .gallery-item:hover img { transform: scale(1.1); }
         .gallery-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
             display: flex;
             align-items: flex-end;
             padding: 1.5rem;
         }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
         .gallery-overlay span {
             font-family: 'Syne', sans-serif;
             font-weight: 600;
-            color: var(--gold);
+            color: var(--rose-gold);
+            font-size: 1.1rem;
         }
 
         /* ABOUT */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+        .about-text {
+            max-width: 600px;
+            margin: 0 auto;
         }
         .about-text p {
             color: var(--gray);
             margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-        .about-image {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--surface);
-        }
-        .about-image img {
-            width: 100%;
-            display: block;
-            filter: grayscale(30%);
-            transition: filter 0.4s;
-        }
-        .about-image:hover img { filter: grayscale(0%); }
-        .about-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border: 1px solid rgba(201, 168, 76, 0.2);
-            border-radius: 12px;
-            pointer-events: none;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
 
         /* LOCATION */
@@ -320,21 +301,18 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            align-items: stretch;
+            max-width: 1000px;
+            margin: 0 auto;
+            align-items: start;
         }
         .location-info {
             display: flex;
             flex-direction: column;
             gap: 2rem;
-        }
-        .info-block {
-            background: var(--surface);
-            border: 1px solid rgba(255,255,255,0.03);
-            border-radius: 12px;
-            padding: 2rem;
+            text-align: left;
         }
         .info-block h3 {
-            color: var(--gold);
+            color: var(--rose-gold);
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -346,24 +324,25 @@
             font-size: 1.1rem;
             line-height: 1.8;
         }
-        .info-block a:hover { color: var(--gold); }
+        .info-block a:hover { color: var(--rose-gold); }
         .hours-row {
             display: flex;
             justify-content: space-between;
             padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .hours-row:last-child { border-bottom: none; }
         .hours-row span:first-child { color: var(--gray); }
         .map-container {
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
-            min-height: 400px;
+            border: 1px solid rgba(255,255,255,0.1);
+            height: 100%;
+            min-height: 350px;
         }
         .map-container iframe {
             width: 100%; height: 100%;
-            min-height: 400px;
+            min-height: 350px;
             border: none;
             filter: grayscale(100%) invert(92%) contrast(83%);
         }
@@ -371,7 +350,7 @@
         /* FOOTER */
         footer {
             background: var(--charcoal);
-            border-top: 1px solid rgba(201, 168, 76, 0.1);
+            border-top: 1px solid rgba(212, 165, 165, 0.1);
             padding: 4rem 2rem 2rem;
             text-align: center;
         }
@@ -379,7 +358,7 @@
             font-family: 'Syne', sans-serif;
             font-size: 2rem;
             font-weight: 800;
-            color: var(--gold);
+            color: var(--rose-gold);
             letter-spacing: 3px;
             margin-bottom: 1rem;
         }
@@ -398,7 +377,7 @@
             letter-spacing: 1px;
             transition: color 0.3s;
         }
-        .footer-links a:hover { color: var(--gold); }
+        .footer-links a:hover { color: var(--rose-gold); }
         .footer-copy {
             color: var(--gray-dark);
             font-size: 0.8rem;
@@ -409,11 +388,13 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-menu { display: block; }
-            .hero h1 { font-size: 2.5rem; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .about-content, .location-grid { grid-template-columns: 1fr; }
+            .fullscreen-section h1 { font-size: 2.5rem; }
+            .service-row { flex-direction: column; gap: 0.5rem; }
+            .service-price { margin-left: 0; }
+            .location-grid { grid-template-columns: 1fr; }
             .hero-cta { flex-direction: column; width: 100%; }
             .btn { width: 100%; justify-content: center; }
+            .gallery-item { flex: 0 0 250px; height: 350px; }
         }
     </style>
 </head>
@@ -424,198 +405,165 @@
         <div class="brand">ANCO Studio</div>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
-            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#gallery">Work</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#location">Location</a></li>
+            <li><a href="#location">Find Us</a></li>
         </ul>
         <div class="mobile-menu">☰</div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="status-pill">
-            <span class="status-dot" id="statusDot"></span>
-            <span id="statusText">Checking hours...</span>
-        </div>
-        <h1>ANCO <span>Studio</span></h1>
-        <p class="hero-sub">Premium barbering in the heart of Auckland CBD. Walk in, look sharp.</p>
-        <div class="hero-cta">
-            <a href="tel:+6491234567" class="btn btn-primary">Call Now</a>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=1A%2F120+Customs+Street+West+Auckland+CBD" target="_blank" class="btn btn-ghost">Get Directions</a>
-        </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services">
-        <h2 class="section-title">The <span>Menu</span></h2>
-        <p class="section-sub">No bookings. Just walk in and take a seat.</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Signature Cut</h3>
-                <div class="price">$55</div>
-                <p>Precision scissor and clipper work. Includes consultation, wash, and style finish.</p>
+    <!-- HERO — Full-bleed with background image -->
+    <section class="fullscreen-section" style="background-image: url('images/6.jpg');" id="hero">
+        <div class="section-overlay"></div>
+        <div class="section-content">
+            <div class="status-pill">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">Checking hours...</span>
             </div>
-            <div class="service-card">
-                <h3>Skin Fade</h3>
-                <div class="price">$60</div>
-                <p>Clean taper from skin to length. Hot towel neck shave included.</p>
-            </div>
-            <div class="service-card">
-                <h3>Beard Sculpt</h3>
-                <div class="price">$35</div>
-                <p>Shape, line-up, and trim. Finished with beard oil and hot towel.</p>
-            </div>
-            <div class="service-card">
-                <h3>The Full Works</h3>
-                <div class="price">$85</div>
-                <p>Haircut, beard trim, hot towel shave, and facial scrub. The complete experience.</p>
-            </div>
-            <div class="service-card">
-                <h3>Hot Towel Shave</h3>
-                <div class="price">$45</div>
-                <p>Traditional straight-razor shave with hot towels, pre-shave oil, and aftercare.</p>
-            </div>
-            <div class="service-card">
-                <h3>Junior Cut</h3>
-                <div class="price">$35</div>
-                <p>For the next generation. Ages 12 and under. Wash and style included.</p>
+            <h1>ANCO <span>Studio</span></h1>
+            <p class="section-sub">Auckland's destination for sophisticated colour work, precision styling, and seamless blondes.</p>
+            <div class="hero-cta">
+                <a href="tel:+64272257002" class="btn btn-primary">Call Now</a>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=1A%2F120+Customs+Street+West+Auckland+CBD" target="_blank" class="btn btn-ghost">Get Directions</a>
             </div>
         </div>
     </section>
 
-    <!-- GALLERY -->
-    <!-- 
-    ============================================
-    ADD YOUR OWN PHOTOS HERE
-    ============================================
-    Replace the src paths below with your own image files.
-    Options:
-    1. Local files:   src="images/photo1.jpg"
-    2. Full URL:      src="https://yourdomain.com/photos/shop.jpg"
-    3. Same folder:   src="shop-interior.jpg"
-    
-    Recommended image size: 800x800px or larger (square works best)
-    Format: JPG or WebP for best performance
-    
-    To add MORE photos, just copy/paste another .gallery-item block.
-    To remove photos, delete a .gallery-item block.
-    
-    Update the overlay text (<span>) to match what's in each photo.
-    ============================================
-    -->
-    <section id="gallery" class="gallery">
-        <h2 class="section-title">The <span>Shop</span></h2>
-        <p class="section-sub">A space built for craft.</p>
-        <div class="gallery-grid">
-            
-            <!-- PHOTO 1 -->
-            <div class="gallery-item">
-                <img src="images/shop-interior.jpg" alt="ANCO Studio interior">
-                <div class="gallery-overlay"><span>Interior</span></div>
+    <!-- SERVICES — Full-bleed with background image -->
+    <section class="fullscreen-section" style="background-image: url('images/5.jpg');" id="services">
+        <div class="section-overlay"></div>
+        <div class="section-content" style="width: 100%; max-width: 900px;">
+            <h2>The <span>Menu</span></h2>
+            <p class="section-sub">Luxury yet accessible. Walk in and transform.</p>
+            <div class="services-list">
+                <div class="service-row">
+                    <div>
+                        <div class="service-name">Cut & Style</div>
+                        <div class="service-desc">Consultation, precision cut, blow-dry finish</div>
+                    </div>
+                    <div class="service-price">$85</div>
+                </div>
+                <div class="service-row">
+                    <div>
+                        <div class="service-name">Colour & Balayage</div>
+                        <div class="service-desc">Full colour, balayage, or highlights with toner</div>
+                    </div>
+                    <div class="service-price">From $180</div>
+                </div>
+                <div class="service-row">
+                    <div>
+                        <div class="service-name">Blow-Dry</div>
+                        <div class="service-desc">Wash, professional blow-dry, and style</div>
+                    </div>
+                    <div class="service-price">$55</div>
+                </div>
+                <div class="service-row">
+                    <div>
+                        <div class="service-name">The Full Experience</div>
+                        <div class="service-desc">Cut, colour, treatment mask, and blow-dry</div>
+                    </div>
+                    <div class="service-price">$250</div>
+                </div>
+                <div class="service-row">
+                    <div>
+                        <div class="service-name">Treatment Mask</div>
+                        <div class="service-desc">Deep conditioning to restore shine and health</div>
+                    </div>
+                    <div class="service-price">$45</div>
+                </div>
+                <div class="service-row">
+                    <div>
+                        <div class="service-name">Men's Cut</div>
+                        <div class="service-desc">Precision men's cut with wash and style</div>
+                    </div>
+                    <div class="service-price">$55</div>
+                </div>
             </div>
-            
-            <!-- PHOTO 2 -->
-            <div class="gallery-item">
-                <img src="images/barber-at-work.jpg" alt="Barber cutting hair">
-                <div class="gallery-overlay"><span>Craft</span></div>
-            </div>
-            
-            <!-- PHOTO 3 -->
-            <div class="gallery-item">
-                <img src="images/haircut-detail.jpg" alt="Fade haircut detail">
-                <div class="gallery-overlay"><span>Detail</span></div>
-            </div>
-            
-            <!-- PHOTO 4 -->
-            <div class="gallery-item">
-                <img src="images/hot-towel-shave.jpg" alt="Hot towel shave">
-                <div class="gallery-overlay"><span>Shave</span></div>
-            </div>
-            
-            <!-- PHOTO 5 -->
-            <div class="gallery-item">
-                <img src="images/shop-front.jpg" alt="ANCO Studio storefront">
-                <div class="gallery-overlay"><span>Street View</span></div>
-            </div>
-            
-            <!-- PHOTO 6 -->
-            <div class="gallery-item">
-                <img src="images/beard-trim.jpg" alt="Beard trim">
-                <div class="gallery-overlay"><span>Beard</span></div>
-            </div>
-            
-            <!-- PHOTO 7 -->
-            <div class="gallery-item">
-                <img src="images/client-after.jpg" alt="Fresh cut">
-                <div class="gallery-overlay"><span>Fresh</span></div>
-            </div>
-            
-            <!-- PHOTO 8 -->
-            <div class="gallery-item">
-                <img src="images/shop-vibe.jpg" alt="Shop atmosphere">
-                <div class="gallery-overlay"><span>Vibe</span></div>
-            </div>
-            
         </div>
     </section>
 
-    <!-- ABOUT -->
-    <!-- 
-    ============================================
-    ABOUT SECTION IMAGE
-    Replace the src below with your own photo.
-    Suggested: a wide shop shot or team photo.
-    Recommended size: 800x600px or larger.
-    ============================================
-    -->
-    <section id="about">
-        <div class="about-content">
+    <!-- GALLERY — Horizontal scroll -->
+    <section class="fullscreen-section" style="background: var(--black); justify-content: flex-start; padding-top: 8rem;" id="gallery">
+        <div class="section-content" style="width: 100%; max-width: 1200px;">
+            <h2>The <span>Work</span></h2>
+            <p class="section-sub">Real clients. Real transformations.</p>
+            <div class="gallery-scroll">
+                <div class="gallery-item">
+                    <img src="images/1.jpg" alt="Interior">
+                    <div class="gallery-overlay"><span>Interior</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/2.jpg" alt="Blow dry">
+                    <div class="gallery-overlay"><span>Craft</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/3.jpg" alt="Balayage">
+                    <div class="gallery-overlay"><span>Color</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/4.jpg" alt="Styling">
+                    <div class="gallery-overlay"><span>Style</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/7.jpg" alt="Blonde">
+                    <div class="gallery-overlay"><span>Blonde</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/8.jpg" alt="Vibe">
+                    <div class="gallery-overlay"><span>Vibe</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT — Full-bleed with background image -->
+    <section class="fullscreen-section" style="background-image: url('images/about.jpg');" id="about">
+        <div class="section-overlay"></div>
+        <div class="section-content">
+            <h2>Built on <span>Craft</span></h2>
             <div class="about-text">
-                <h2 class="section-title" style="text-align:left;">Built on <span>Craft</span></h2>
-                <p>ANCO Studio sits at 1A/120 Customs Street West — right in the pulse of Auckland's CBD. We're a walk-in barbershop for people who value sharp work without the fuss.</p>
-                <p>No apps. No deposits. Just show up, take a seat, and leave looking like you meant to. Our barbers cut with intention — whether it's a clean fade, a classic scissor cut, or a straight-razor shave.</p>
-                <p>We've built the shop around honest craft, good conversation, and zero pretension. Come through.</p>
-            </div>
-            <div class="about-image">
-                <img src="images/about-shop.jpg" alt="ANCO Studio barbershop">
+                <p>ANCO Studio sits at 1A/120 Customs Street West in the Viaduct Harbour — the heart of Auckland's waterfront. We're a luxury yet accessible hair salon for people who value exceptional colour, cut, and style.</p>
+                <p>Director Adrian Deng is Auckland's Best Colourist for Blondes, with over ten years of experience. Our team are official ambassadors for Olaplex and Lakmē, and experts in everything from seamless blondes to rich mahoganies.</p>
+                <p>Enjoy our unique full-body massage basins while you transform. No apps. No deposits. Just walk in and leave renewed.</p>
             </div>
         </div>
     </section>
 
     <!-- LOCATION -->
-    <section id="location">
-        <h2 class="section-title">Find <span>Us</span></h2>
-        <p class="section-sub">1A/120 Customs Street West, Auckland CBD</p>
-        <div class="location-grid">
-            <div class="location-info">
-                <div class="info-block">
-                    <h3>Address</h3>
-                    <p>1A/120 Customs Street West<br>Auckland CBD, Auckland 1010<br>New Zealand</p>
+    <section style="padding: 6rem 2rem; background: var(--charcoal);" id="location">
+        <div class="section-content" style="max-width: 1000px; margin: 0 auto;">
+            <h2 class="section-title">Find <span>Us</span></h2>
+            <p class="section-sub">1A/120 Customs Street West, Viaduct Harbour</p>
+            <div class="location-grid">
+                <div class="location-info">
+                    <div class="info-block">
+                        <h3>Address</h3>
+                        <p>1A/120 Customs Street West<br>Viaduct Harbour, Auckland CBD<br>Auckland 1010, New Zealand</p>
+                    </div>
+                    <div class="info-block">
+                        <h3>Contact</h3>
+                        <p><a href="tel:+64272257002">+64 27 225 7002</a></p>
+                        <p><a href="mailto:info@ancostudio.com">info@ancostudio.com</a></p>
+                        <p><a href="https://instagram.com/anco.studio" target="_blank">@anco.studio</a></p>
+                    </div>
+                    <div class="info-block">
+                        <h3>Hours</h3>
+                        <div class="hours-row"><span>Tuesday</span><span>10:00 AM – 8:00 PM</span></div>
+                        <div class="hours-row"><span>Wednesday</span><span>10:00 AM – 8:00 PM</span></div>
+                        <div class="hours-row"><span>Thursday</span><span>10:00 AM – 5:00 PM</span></div>
+                        <div class="hours-row"><span>Friday</span><span>10:00 AM – 5:00 PM</span></div>
+                        <div class="hours-row"><span>Saturday</span><span>9:00 AM – 5:00 PM</span></div>
+                        <div class="hours-row"><span>Sunday & Monday</span><span>Closed</span></div>
+                    </div>
                 </div>
-                <div class="info-block">
-                    <h3>Contact</h3>
-                    <p><a href="tel:+6491234567">+64 9 123 4567</a></p>
-                    <p><a href="mailto:hello@ancostudio.com">hello@ancostudio.com</a></p>
-                    <p><a href="https://instagram.com/anco.studio" target="_blank">@anco.studio</a></p>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.1234567890123!2d174.764!3d-36.844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47f9dabcdef1%3A0x1234567890abcdef!2s1A%2F120%20Customs%20Street%20West%2C%20Auckland%20CBD%2C%20Auckland%201010!5e0!3m2!1sen!2snz!4v1699999999999!5m2!1sen!2snz"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
-                <div class="info-block">
-                    <h3>Hours</h3>
-                    <div class="hours-row"><span>Monday</span><span>9:00 AM – 6:00 PM</span></div>
-                    <div class="hours-row"><span>Tuesday</span><span>9:00 AM – 6:00 PM</span></div>
-                    <div class="hours-row"><span>Wednesday</span><span>9:00 AM – 6:00 PM</span></div>
-                    <div class="hours-row"><span>Thursday</span><span>9:00 AM – 7:00 PM</span></div>
-                    <div class="hours-row"><span>Friday</span><span>9:00 AM – 7:00 PM</span></div>
-                    <div class="hours-row"><span>Saturday</span><span>8:00 AM – 4:00 PM</span></div>
-                    <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
-                </div>
-            </div>
-            <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.1234567890123!2d174.764!3d-36.844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47f9dabcdef1%3A0x1234567890abcdef!2s1A%2F120%20Customs%20Street%20West%2C%20Auckland%20CBD%2C%20Auckland%201010!5e0!3m2!1sen!2snz!4v1699999999999!5m2!1sen!2snz"
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
             </div>
         </div>
     </section>
@@ -623,11 +571,11 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-brand">ANCO Studio</div>
-        <p style="color: var(--gray); font-size: 0.9rem;">Premium barbering. Auckland CBD.</p>
+        <p style="color: var(--gray); font-size: 0.9rem;">Auckland's blonde specialist. Viaduct Harbour.</p>
         <div class="footer-links">
             <a href="https://instagram.com/anco.studio" target="_blank">Instagram</a>
             <a href="https://facebook.com/anco.studio" target="_blank">Facebook</a>
-            <a href="mailto:hello@ancostudio.com">Email</a>
+            <a href="mailto:info@ancostudio.com">Email</a>
         </div>
         <p class="footer-copy">© 2026 ANCO Studio. All rights reserved.</p>
     </footer>
@@ -643,10 +591,13 @@
             
             let open = false;
             const schedule = {
-                0: null, // Sunday closed
-                1: [9, 18], 2: [9, 18], 3: [9, 18],
-                4: [9, 19], 5: [9, 19],
-                6: [8, 16]
+                0: null, // Sunday
+                1: null, // Monday
+                2: [10, 20], // Tuesday
+                3: [10, 20], // Wednesday
+                4: [10, 17], // Thursday
+                5: [10, 17], // Friday
+                6: [9, 17]   // Saturday
             };
             
             const today = schedule[day];
